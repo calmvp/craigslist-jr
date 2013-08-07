@@ -1,0 +1,25 @@
+<div id="container">
+<h2>Create Post</h2>
+<form action="/posts"  name="postform" method="post">
+<p>Email:</p>
+<input type="text" name="post[email]">
+<br><br>
+<p>Item Name:</p>
+<input type="text" name="post[title]">
+<br><br>
+<p>Item Description:</p>
+<input type="text" name="post[description]">
+<p>Item Price: <input type="text" name="post[price]"></p>
+<p>Select Category:</p>
+<select name="post[category_id]">
+  <option value=1>Movies</option>
+  <option value=2>Autographs</option>
+  <option value=3>Posters</option>
+  <option value=4>Hair Care</option>
+  <option value=5>Apparel</option>
+  <option value=6>Books</option>
+</select>
+<br><br>
+<input type="submit" value="Submit!">
+</form>
+</div>
