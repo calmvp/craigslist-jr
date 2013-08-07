@@ -1,3 +1,5 @@
+
+
 get "/" do
   @categories = Category.order("name ASC")
   @title = "Welcome to CageList"
@@ -12,12 +14,8 @@ end
 
 post "/posts" do
   @post = Post.create_post(params[:post])
-  redirect "/categories/#{params[:post][:category_id]}"
-  if @post.save
-    redirect "posts/#{@post.id}", :notice => 'Congrats! Excellent new post.'
-  else
-    redirect "posts/create", :error => 'Something went wrong. Try again.'
-  end
+  redirect "/categories/#{params[:post][:category_id]}", 
+  # :notice => 'Congrats! Your new access url is #{@post.access_url}'
 end
 
 get "/posts/:id" do
@@ -30,7 +28,7 @@ get "/posts/:id" do
 end
 
 get "/categories/:id" do
-  @posts = Post.find_posts(params[:id])
+  @posts = Post.find_posts(params[:id]).order("created_at DESC")
   erb :"category"
 end
 
